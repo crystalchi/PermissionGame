@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.crystal.permissiongame"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile deps.junit
+    //compile 'com.android.support:appcompat-v7:23.4.0'
+    compile deps.supportCompat
+    //compile 'com.android.support:design:23.4.0'
+    compile deps.supportDesign
+    compile project(':permissiongame-lib')
+    apt project(':permissiongame-compiler') //指定compiler得到执行
+}

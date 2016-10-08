@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 23
+    compileSdkVersion = 23
+    buildToolsVersion = '23.0.3'
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7 //指定编译编译.java文件的jdk版本
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7 //确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容
+}
+
+//groovy定义字符串
+def supportLibraryVersion = '23.4.0'
+
+ext.deps = [
+    supportCompat : "com.android.support:appcompat-v7:$supportLibraryVersion",
+    supportDesign : "com.android.support:design:$supportLibraryVersion",
+    autoService : 'com.google.auto.service:auto-service:1.0-rc2',
+    junit : 'junit:junit:4.12'
+
+]

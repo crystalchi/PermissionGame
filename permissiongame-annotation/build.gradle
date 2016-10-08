@@ -1,0 +1,12 @@
+apply plugin: 'java'
+sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+targetCompatibility = rootProject.ext.targetCompatibilityVersion
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+//编码 GBK 的不可映射字符的
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
